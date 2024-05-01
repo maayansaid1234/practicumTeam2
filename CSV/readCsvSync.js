@@ -1,3 +1,4 @@
+//CSV Read home made for Candles - task1
 const fs = require('fs');
 const csv = require('csv-parser');
 
