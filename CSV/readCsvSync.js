@@ -8,7 +8,10 @@ function readCSVFileSync(filePath) {
         const fileData = fs.readFileSync(filePath, 'utf8');
 		let [first,...rest] = fileData.split("\n")
 		rest = rest.filter(row=>row!="")
-		let  ret = rest.map(row=>row.split(",").reduce((acc,field,index)=>{return{...acc,[first.split(",")[index]]:index==0?new Date(field):parseInt(field)}},{}))
+		let  ret = rest.map(row=>row.split(",")
+        .reduce((acc,field,index)=>
+        {return{...acc,[first.split(",")[index]]
+        :index==0?new Date(field):parseInt(field)}},{}))
 		
 		return ret
 		
