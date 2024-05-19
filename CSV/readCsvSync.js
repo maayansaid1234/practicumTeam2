@@ -6,7 +6,10 @@ function readCSVFileSync(filePath) {
     try {
         
         const fileData = fs.readFileSync(filePath, 'utf8');
-		let [first,...rest] = fileData.split("\n")
+		// let [first,...rest] = fileData.split("\n")
+		// rest = rest.filter(row=>row!="")
+       let first="Date,Open,Low,High,Close,AdjClose,Volume";
+        let rest = fileData.split("\n")
 		rest = rest.filter(row=>row!="")
 		let  ret = rest.map(row=>row.split(",")
         .reduce((acc,field,index)=>

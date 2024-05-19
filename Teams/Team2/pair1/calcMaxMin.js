@@ -1,41 +1,46 @@
 const { readCSVFileSync } = require("../../../CSV/readCsvSync");
 const fs=require('fs');
 
-let symbol='XTNT'
-
-let arr=readCSVFileSync(`../${symbol}.csv`);
-console.log(arr)
-let mins=[];
-let maxs=[];
-
+const calcMaxMin=(arr,symbol,func)=>{
+// מערך שפלים ופסגות
+const arrMaxMin = arr.reduce((acc, val, index) => {
+      if (index !== 0 && index < arr.length - 1) {
+          if (func(arr[index - 1]) > func(val) && func(arr[index + 1]) > func(val)) {
+              return [...acc, { Date: val.Date, Value: func(val), Type: "Min" }];
+          } else if (func(arr[index - 1]) < func(val) && func(arr[index + 1]) < func(val)) {
+              return [...acc, { Date: val.Date, Value: func(val), Type: "Max" }];
+          }
+      }
+      return acc;
+  }, []);
+  
 
 // שפלים
-for (let index = 1; index < arr.length-1; index++) {
-   if(arr[index-1].close>arr[index].close&&
-    arr[index+1].close>arr[index].close)
-
-{
-    mins.push(arr[index]);
-}
-}
+const minPoints=arrMaxMin.filter(val=>val.Type=="Min")
 
 // פסגות
-for (let index = 1; index < arr.length-1; index++) {
-    if(arr[index-1].close<arr[index].close&&
-     arr[index+1].close<arr[index].close)
- 
- {
-     maxs.push(arr[index]);
- }
- }
+const maxPoints=arrMaxMin.filter(val=>val.Type=="Max")
+   
+
 
 //יצירת תיקיה לכל מניה
 let directory=fs.mkdirSync(symbol);
 
 // יצירת קובץ שפלים
 let minJsonFile=fs.writeFileSync(`${symbol}/min.json`,
-JSON.stringify(mins));
+JSON.stringify(minPoints));
 
 // יצירת קובץ פסגות
 let maxJsonFile=fs.writeFileSync(`${symbol}/max.json`,
-JSON.stringify(maxs));
+JSON.stringify(maxPoints));
+return arrMaxMin;
+}
+
+let symbol='A'
+let arr=readCSVFileSync(`../${symbol}.csv`);
+console.log(calcMaxMin(arr,symbol,a=>a.Close));
+
+
+
+
+
