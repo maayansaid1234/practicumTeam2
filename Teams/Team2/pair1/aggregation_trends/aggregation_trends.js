@@ -1,10 +1,17 @@
-const getArrTrendsBySymbolAndType = require("../trend_improve/trendTask");
-
-
-const aggregation_trends=(trends)=>{
+ 
+const aggregation_trends=(trends,endDate,startDate)=>{
    const start=trends[0]
    const end=trends[trends.length-1]
-   const trend=start.startValue>end.endValue?"down":"up"
+   let trend;
+   let slope =(end.endValue-start.startValue)/(end.endIndex-start.startIndex)
+   if(slope<1)
+   { // shuffle
+      trend="up"
+
+   }
+   else{
+     trend=start.startValue>end.endValue?"down":"up"
+   }
    return {
       
     startValue:start.startValue,
@@ -20,6 +27,5 @@ const aggregation_trends=(trends)=>{
 
 }
 
-let symbol = 'A';
-let type="min";
-console.log(aggregation_trends(getArrTrendsBySymbolAndType(symbol,type)));
+
+module.exports=aggregation_trends;

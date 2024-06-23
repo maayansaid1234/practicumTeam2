@@ -140,13 +140,18 @@ const trendTask = (arr) => {
     return arrTrends;
 }
 
-
-let symbol = 'A'
-let arrMax = fs.readFileSync(`../extremes_improve/extremes/${symbol}/max.json`);
-let arrMin = fs.readFileSync(`../extremes_improve/extremes/${symbol}/min.json`);
-arrMax = JSON.parse(arrMax);
-arrMin = JSON.parse(arrMin);
-const trendsFromMaxPoints= trendTask(arrMax);   
-const trendsFromMinPoints=trendTask(arrMin);  
-console.log(trendsFromMaxPoints)
+const getArrTrendsBySymbolAndType=(symbol,type)=>{
+    let arr = fs.readFileSync(`../extremes_improve/extremes/${symbol}/${type}.json`);
+    arr = JSON.parse(arr);
+   return trendTask(arr);
+}
+// let symbol = 'A'
+// let arrMax = fs.readFileSync(`../extremes_improve/extremes/${symbol}/max.json`);
+// let arrMin = fs.readFileSync(`../extremes_improve/extremes/${symbol}/min.json`);
+// arrMax = JSON.parse(arrMax);
+// arrMin = JSON.parse(arrMin);
+// const trendsFromMaxPoints= trendTask(arrMax);   
+// const trendsFromMinPoints=trendTask(arrMin);  
+// console.log(trendsFromMaxPoints)
+module.exports=getArrTrendsBySymbolAndType
     
