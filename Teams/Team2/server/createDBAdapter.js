@@ -1,10 +1,9 @@
-const SQLServerAdapter = require('./sqlAdapter');
+
+const config = require('./config.json');
+const createDBAdapterSingleton = require('./'+config.dbAdapter.type+"Adapter");
 
 
-     const dbAdapter=new SQLServerAdapter();
+     const dbAdapter=createDBAdapterSingleton(config.dbAdapter.connectionString);
 
-
-
-
-
+  
 module.exports=dbAdapter;

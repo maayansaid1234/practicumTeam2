@@ -49,9 +49,9 @@ dbAdapter.query
 // console.log("realtime arr")
 // console.log(realTimeNotifications)
 // console.log("end")
-console.log("combined arr")
-console.log(combinedArr)
-console.log("end")
+// console.log("combined arr")
+// console.log(combinedArr)
+// console.log("end")
          return combinedArr;
     }
 

@@ -78,17 +78,17 @@
 // });
 
 
-
+const  config= require('./config.json');
 const nodemailer = require('nodemailer');
 const NotificationAdapter = require('./notificationAdapter');
 
 class MailAdapter extends NotificationAdapter {
-
-    constructor(config) {
+    constructor() {
+    // constructor(sendConfig) {
         super();
-        this.transporter = nodemailer.createTransport(config);
-        this.myEmailAddress= process.env.MAILADDRESS;
-        this.password = process.env.PASSWARD
+        // this.transporter = nodemailer.createTransport(sendConfig);
+        this.myEmailAddress= config.mailDetails.address;
+        this.password =config.mailDetails.password
     }
 
 
@@ -113,7 +113,7 @@ class MailAdapter extends NotificationAdapter {
 
 
 
- send(mailsAddress,notification){
+ sendNotification(mailAddress,notification){
     let message=`StockName : ${notification.StockName},
     NotificationType : ${notification.NotificationType},
      ClosingPrice : ${notification.ClosingPrice},

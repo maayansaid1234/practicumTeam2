@@ -1,0 +1,10 @@
+{
+ "dbAdapter":{
+    "type":"sql",
+    "connectionString":"Server=localhost;Database=Stocks;Trusted_Connection=Yes;Driver={ODBC Driver 17 for SQL Server}"
+ },
+ "mailDetails":{
+  "address":"",
+  "password":""
+ }
+}

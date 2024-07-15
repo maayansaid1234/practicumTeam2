@@ -2,16 +2,16 @@ const sql = require('msnodesqlv8');
 const DatabaseAdapter = require('./databaseAdapter');
 
 class SQLServerAdapter extends DatabaseAdapter {
-    constructor() {
+    constructor(connectionString) {
         super();
-        this.connectionString = null;
+        this.connectionString = connectionString;
         this.conn=null;
         
     }
 
-    async connect(connectionString) {
+    async connect() {
         try {
-            this.connectionString=connectionString;
+            
             console.log('Attempting to connect to the database...');
             sql.open(this.connectionString, (err, conn) => {
                 if (err) {
@@ -55,6 +55,17 @@ class SQLServerAdapter extends DatabaseAdapter {
                     console.log('Disconnected from the database');
                 });
     }
-}
+    }
+    const createSQLServerAdapterSingleton = (function () {
+        let instance;
+    
+        return function (connectionString) {
+            if (!instance) {
+                instance = new SQLServerAdapter(connectionString);
+            }
+            return instance;
+        };
+    })();
 
-module.exports = SQLServerAdapter;
+
+module.exports = createSQLServerAdapterSingleton;
