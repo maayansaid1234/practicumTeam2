@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import ListItem from './listItem';
+import { useSelector } from 'react-redux';
 
 const Notifications = () => {
-    const [alerts, setAlerts] = useState([]);
-const userMail="m@h"
+const [alerts, setAlerts] = useState([]);
+const userMail=useSelector(st=>st.user.currentUser);
 useEffect(() => {
     const ws = new WebSocket('ws://localhost:8080');
 
@@ -31,9 +33,9 @@ useEffect(() => {
         <div>
             <h1>Notifications</h1>
             <ul>
-                {alerts.map((alert, index) => (
+                {alerts.map((notification, index) => (
                     <li key={index}>
-                        {alert.title}
+                       <ListItem notification={notification}/>
                     </li>
                 ))}
             </ul>
