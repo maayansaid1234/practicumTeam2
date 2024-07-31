@@ -3,25 +3,19 @@ class DatabaseAdapter {
         throw new Error("Method 'connect()' must be implemented.");
     }
 
-    // query(tableName) {
-    //     throw new Error("Method 'query()' must be implemented.");
-    // }
-
-    // insert(data,tableName) {
-    //     throw new Error("Method 'query()' must be implemented.");
-    // }
-    selectFromCombinedNotifications(userMail) {
+ 
+    selectFromSystemDetectedNotificationsOfUsers(userMail) {
 
     }
-    selectFromRealTimeNotifications() {
+    selectFromSystemDetectedNotifications() {
 
     }
 
-    insertIntoCombinedNotifications(userMail, realTimeId
+    insertIntoSystemDetectedNotificationsOfUsers(userMail, realTimeId
     ) {
 
     }
-    insertIntoRealTimeNotifications(
+    insertIntoSystemDetectedNotifications(
         id, stockName, notificationType, closingPrice, volume, usersCounter
     ) {
 

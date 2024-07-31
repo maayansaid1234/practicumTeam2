@@ -1,5 +1,5 @@
 class NotifierAdapter {
-    sendNotification(UserMail, notification) {
+    sendNotification(userMail, notification) {
         throw new Error("Method 'send()' must be implemented.");
     }
 }

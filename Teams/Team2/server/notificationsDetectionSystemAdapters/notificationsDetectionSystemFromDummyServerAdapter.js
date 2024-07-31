@@ -6,7 +6,7 @@ class NotificationsDetectionSystemFromDummyServerAdapter extends NotificationsDe
     constructor() {
         super();
     }
-    async fetchRealTimeNotifications(){
+    async fetchSystemDetectedNotifications(){
         try {
             let route = config.notificationsDetectionSystemAdapter.route;
             let data = await fs.readFile(route, 'utf-8');

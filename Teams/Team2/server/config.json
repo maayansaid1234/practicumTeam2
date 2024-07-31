@@ -15,6 +15,6 @@
 },
 "notificationsDetectionSystemAdapter":{
 "type":"DummyServer",
-"route":"./dummyServers/notificationsDetectionSystemDummyServer/realTimeNotifications.json"
+"route":"./dummyServers/notificationsDetectionSystemDummyServer/systemDetectedNotifications.json"
 }
 }

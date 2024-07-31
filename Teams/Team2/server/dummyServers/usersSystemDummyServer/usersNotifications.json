@@ -1,14 +1,15 @@
 [
-    {"StockName":"TSLA","NotificationType":
-    "triangle","UserMail":"maayansaid1234@gmail.com","MaxPrice":5,"MinPrice":2
+    {"stockName":"TSLA","notificationType":
+    "triangle","userMail":"maayansaid1234@gmail.com",
+    "maxPrice":5,"minPrice":2
 },
 {
-    "StockName":"MSFT","NotificationType":
-    "double bottoms","UserMail":"maayansaid1234@gmail.com","MaxPrice":5,"MinPrice":1
+    "stockName":"MSFT","notificationType":
+    "double bottoms","userMail":"maayansaid1234@gmail.com","maxPrice":5,"minPrice":1
 },
-{"StockName":"TSLA","NotificationType":
-    "triangle","UserMail":"hhhh@oodidactics.com","MaxPrice":5,"MinPrice":1
+{"stockName":"TSLA","notificationType":
+    "triangle","userMail":"hhhh@oodidactics.com","maxPrice":5,"minPrice":1
 },
-{"StockName":"AA","NotificationType":
-    "triangle","UserMail":"rahchel@gmail.com","MaxPrice":5,"MinPrice":2
+{"stockName":"AA","notificationType":
+    "triangle","userMail":"rahchel@gmail.com","maxPrice":5,"minPrice":2
 }]

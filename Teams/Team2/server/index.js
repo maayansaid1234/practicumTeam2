@@ -1,5 +1,5 @@
 const express = require("express");
-const getCombinedTable =require("./getCombinedNotifications.js")
+const getCombinedNotifications =require("./getCombinedNotifications.js")
 const dbAdapter=require("./db/createDBAdapter.js")
 const notificationRouter=require("./routes/notification.js")
 const userRouter=require("./routes/user.js");
@@ -41,19 +41,17 @@ const fetchNewNotifications = async () => {
 
     try {
     
-     const newNotifications=await notificationsDetectionSystemAdapter.fetchRealTimeNotifications();
+       const newNotifications=await notificationsDetectionSystemAdapter.fetchSystemDetectedNotifications();
         Notifications = [...Notifications, ...newNotifications];
-  
-      
        const notificationsOfUsers=await usersSystemAdapter.fetchUsersNotifications()
-       const combinedArr= await getCombinedTable(
+       const combinedArr= await getCombinedNotifications(
         newNotifications,
     notificationsOfUsers);
 
    
      combinedArr.forEach(item=>{
         
-        notificationService.sendNotification(item.UserMail,item)
+        notificationService.sendNotification(item.userMail,item)
        
      })
    
@@ -63,7 +61,7 @@ const fetchNewNotifications = async () => {
 };
 
 //קריאה להתראות חדשות אחת ליום (למשל בשעה 00:00)
-cron.schedule('15 01 * * *', fetchNewNotifications);
+cron.schedule('45 19 * * *', fetchNewNotifications);
 
 
 

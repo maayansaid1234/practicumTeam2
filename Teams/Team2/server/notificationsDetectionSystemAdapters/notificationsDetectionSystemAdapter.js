@@ -1,6 +1,6 @@
 class NotificationsDetectionSystemAdapter{
 
-async fetchRealTimeNotificationsAdapter(){
+async fetchSystemDetectedNotifications(){
 
 }
 

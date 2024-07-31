@@ -5,7 +5,7 @@ const dbAdapter=require("../db/createDBAdapter");
 const getSystemDetectedNotificationsForUser= async (req, res) =>{
     try{
         let { userMail } = req.params;
-        let systemDetectedNotificationsForUser=await dbAdapter.selectFromCombinedNotifications(userMail);
+        let systemDetectedNotificationsForUser=await dbAdapter.selectFromSystemDetectedNotificationsOfUsers(userMail);
         return res.status(200).json(systemDetectedNotificationsForUser);
        
 
@@ -22,7 +22,7 @@ catch{
 const getSystemDetectedNotifications= async (req, res) =>{
     try{
        
-        let systemDetectedNotifications=await dbAdapter.selectFromRealTimeNotifications()
+        let systemDetectedNotifications=await dbAdapter.selectFromSystemDetectedNotifications()
         return res.status(200).json(systemDetectedNotifications);
        
 

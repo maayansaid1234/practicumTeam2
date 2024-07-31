@@ -6,34 +6,34 @@ const dbAdapter = require("./db/createDBAdapter");
 // לבדוק אם יש התאמה
 
 
-const  getCombinedTable  =
-    async(realTimeNotifications, notificationsOfUsers) => {
+const  getCombinedNotifications  =
+    async(systemDetectedNotifications, usersNotifications) => {
 
         const combinedArr = [];
         let usersCounter =0;
 
-        realTimeNotifications.forEach(realTime => {
+        systemDetectedNotifications.forEach(realTime => {
             
             usersCounter=0;
-            notificationsOfUsers.forEach(userNot => {
+            usersNotifications.forEach(userNot => {
                 
-                if ((realTime.StockName
-                    == userNot.StockName) &&
-                    (realTime.NotificationType
-                        == userNot.NotificationType) &&
-                    (userNot.MinPrice <= realTime.ClosingPrice &&
-                        userNot.MaxPrice >= realTime.ClosingPrice
+                if ((realTime.stockName
+                    == userNot.stockName) &&
+                    (realTime.notificationType
+                        == userNot.notificationType) &&
+                    (userNot.minPrice <= realTime.closingPrice &&
+                        userNot.maxPrice >= realTime.closingPrice
                     ) )
                 {
                    usersCounter++;
                     combinedArr.push(
                         {
-                            StockName: realTime.StockName,
-                            NotificationType: realTime.NotificationType,
-                            UserMail: userNot.UserMail,
-                            RealTimeNotificationId:realTime.Id,
-                            ClosingPrice: realTime.ClosingPrice,
-                            Volume: realTime.Volume
+                            stockName: realTime.stockName,
+                            notificationType: realTime.notificationType,
+                            userMail: userNot.userMail,
+                            systemDetectedNotificationId:realTime.id,
+                            closingPrice: realTime.closingPrice,
+                            volume: realTime.volume
                            
                         })
                         
@@ -41,9 +41,14 @@ const  getCombinedTable  =
 
 
             })
-
- dbAdapter.insertIntoRealTimeNotifications(
- realTime.Id,realTime.StockName,realTime.NotificationType,realTime.ClosingPrice,realTime.Volume,usersCounter)
+try{
+ dbAdapter.insertIntoSystemDetectedNotifications(
+ realTime.id,realTime.stockName,realTime.notificationType,realTime.closingPrice,realTime.volume,usersCounter)   
+}
+catch(err){
+console.log(err)
+}
+ 
         })
     
 
@@ -51,15 +56,21 @@ const  getCombinedTable  =
 
 
 // insert to db
-combinedArr.forEach(item=>
+combinedArr.forEach(item=>{
 
+try{
+   dbAdapter.insertIntoSystemDetectedNotificationsOfUsers(
+ item.userMail,item.systemDetectedNotificationId) 
+}
+catch(err){
+    console.log(err)
+}
+}
 
-dbAdapter.insertIntoCombinedNotifications(
- item.UserMail,item.RealTimeNotificationId)
 )
 
 
          return combinedArr;
     }
 
-    module.exports=getCombinedTable;
+    module.exports=getCombinedNotifications;

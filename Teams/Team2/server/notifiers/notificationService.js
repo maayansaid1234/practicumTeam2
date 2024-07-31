@@ -10,14 +10,14 @@ class NotificationService  {
         
     }
 
-    async sendNotification( UserMail, notification) 
+    async sendNotification( userMail, notification) 
     {
         Object.keys(this.adapters).forEach(async(type) => {
             
        
             try {
-                await this.adapters[type].sendNotification(UserMail, notification);
-                console.log(`Notification sent via ${type} to ${UserMail}. (via web socket only if connected)`);
+                await this.adapters[type].sendNotification(userMail, notification);
+                console.log(`Notification sent via ${type} to ${userMail}. (via web socket only if connected)`);
             } catch (error) {
                 console.error(`Failed to send ${type} notification:`, error);
             }

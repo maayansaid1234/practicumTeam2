@@ -25,10 +25,10 @@ class MailAdapter extends NotifierAdapter {
 
  sendNotification(mailAddress,notification){
     let message=
-    `Stock : ${notification.StockName},
-     Notification Type : ${notification.NotificationType},
-     Closing Price : ${notification.ClosingPrice},
-     Volume : ${notification.Volume}`
+    `Stock : ${notification.stockName},
+     Notification Type : ${notification.notificationType},
+     Closing Price : ${notification.closingPrice},
+     Volume : ${notification.volume}`
     
 
     console.log("email sent succesfully-mailAdpater")

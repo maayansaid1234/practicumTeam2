@@ -29,7 +29,7 @@ class SQLServerAdapter extends DatabaseAdapter {
 
     
 
-    selectFromCombinedNotifications(userMail) {
+    selectFromSystemDetectedNotificationsOfUsers(userMail) {
       return new Promise((resolve, reject) => {
             if (!this.conn) {
                 reject(new Error('Not connected to the database.'));
@@ -37,7 +37,7 @@ class SQLServerAdapter extends DatabaseAdapter {
             }
            
            
-            let  sqlQuery=`EXEC getCombinedNotifications @userMail=?`;
+            let  sqlQuery=`EXEC getSystemDetectedNotificationsOfUsers @userMail=?`;
             const params = [userMail]
             this.conn.query(sqlQuery,params, (err, results) => {
                 if (err) {
@@ -50,14 +50,14 @@ class SQLServerAdapter extends DatabaseAdapter {
             });
         });
     }
-    selectFromRealTimeNotifications() {
+    selectFromSystemDetectedNotifications() {
       return new Promise((resolve, reject) => {
             if (!this.conn) {
                 reject(new Error('Not connected to the database.'));
                 return;
             }
         
-            let sqlQuery=`EXEC getRealTimeNotifications`;
+            let sqlQuery=`EXEC getSystemDetectedNotifications`;
             
             this.conn.query(sqlQuery, (err, results) => {
                 if (err) {
@@ -72,15 +72,15 @@ class SQLServerAdapter extends DatabaseAdapter {
     }
 
     
-    insertIntoCombinedNotifications(userMail, realTimeNotificationId) {
+    insertIntoSystemDetectedNotificationsOfUsers(userMail, systemDetectedNotificationId) {
         return new Promise((resolve, reject) => {
             if (!this.conn) {
                 reject(new Error('Not connected to the database.'));
                 return;
             }
     
-            const sqlQuery = `EXEC insertIntoCombinedNotifications @userMail=?, @realTimeNotificationId=?`;
-            const params = [userMail, realTimeNotificationId];
+            const sqlQuery = `EXEC insertIntoSystemDetectedNotificationsOfUsers @userMail=?, @systemDetectedNotificationId=?`;
+            const params = [userMail, systemDetectedNotificationId];
     
             this.conn.query(sqlQuery, params, (err, results) => {
                 if (err) {
@@ -94,7 +94,7 @@ class SQLServerAdapter extends DatabaseAdapter {
     }
     
     
-    insertIntoRealTimeNotifications(
+    insertIntoSystemDetectedNotifications(
         id, stockName, notificationType, closingPrice, volume, usersCounter
     ) {
         return new Promise((resolve, reject) => {
@@ -104,7 +104,7 @@ class SQLServerAdapter extends DatabaseAdapter {
             }
            
            
-            let  sqlQuery=`EXEC insertIntoRealTimeNotifications @id=?, @stockName=?, @notificationType=?, @closingPrice=?, @volume=?, @usersCounter=?`;
+            let  sqlQuery=`EXEC insertIntoSystemDetectedNotifications @id=?, @stockName=?, @notificationType=?, @closingPrice=?, @volume=?, @usersCounter=?`;
             const params=[id,stockName,notificationType,closingPrice,volume,usersCounter]
             this.conn.query(sqlQuery,params, (err, results) => {
                 if (err) {
