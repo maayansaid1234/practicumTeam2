@@ -4,7 +4,17 @@
     "connectionString":"Server=localhost;Database=Stocks;Trusted_Connection=Yes;Driver={ODBC Driver 17 for SQL Server}"
  },
  "mailDetails":{
-  "address":"",
-  "password":""
- }
+  "mailAddress":"testmail10101092@gmail.com",
+  "appPassword":"pkmi kazj xgow qqfk"
+ },
+ "port":3500,
+ "usersSystemAdapter":{
+   "type":"DummyServer",
+"routeForfetchUsersNotifications":"./dummyServers/usersSystemDummyServer/usersNotifications.json",
+"routeForLogin":"./dummyServers/usersSystemDummyServer/users.json"
+},
+"notificationsDetectionSystemAdapter":{
+"type":"DummyServer",
+"route":"./dummyServers/notificationsDetectionSystemDummyServer/realTimeNotifications.json"
+}
 }

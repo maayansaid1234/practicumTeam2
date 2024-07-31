@@ -1,4 +1,4 @@
-const dbAdapter = require("./createDBAdapter");
+const dbAdapter = require("./db/createDBAdapter");
 
 
 // לעבור על מערך התראות בזמן אמת 
@@ -10,9 +10,11 @@ const  getCombinedTable  =
     async(realTimeNotifications, notificationsOfUsers) => {
 
         const combinedArr = [];
-        
+        let usersCounter =0;
 
         realTimeNotifications.forEach(realTime => {
+            
+            usersCounter=0;
             notificationsOfUsers.forEach(userNot => {
                 
                 if ((realTime.StockName
@@ -21,8 +23,9 @@ const  getCombinedTable  =
                         == userNot.NotificationType) &&
                     (userNot.MinPrice <= realTime.ClosingPrice &&
                         userNot.MaxPrice >= realTime.ClosingPrice
-                    )
-                ) {
+                    ) )
+                {
+                   usersCounter++;
                     combinedArr.push(
                         {
                             StockName: realTime.StockName,
@@ -33,25 +36,29 @@ const  getCombinedTable  =
                             Volume: realTime.Volume
                            
                         })
+                        
                 }
+
+
             })
 
-
+ dbAdapter.insertIntoRealTimeNotifications(
+ realTime.Id,realTime.StockName,realTime.NotificationType,realTime.ClosingPrice,realTime.Volume,usersCounter)
         })
+    
+
+
+
+
 // insert to db
 combinedArr.forEach(item=>
-dbAdapter.query
-(`insert into  CombinedNotifications values('${item.UserMail}',${item.RealTimeNotificationId})`)
+
+
+dbAdapter.insertIntoCombinedNotifications(
+ item.UserMail,item.RealTimeNotificationId)
 )
-// console.log("users arr")
-// console.log(notificationsOfUsers)
-// console.log("end")
-// console.log("realtime arr")
-// console.log(realTimeNotifications)
-// console.log("end")
-// console.log("combined arr")
-// console.log(combinedArr)
-// console.log("end")
+
+
          return combinedArr;
     }
 

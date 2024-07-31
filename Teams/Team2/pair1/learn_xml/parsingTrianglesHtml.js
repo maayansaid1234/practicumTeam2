@@ -20,13 +20,15 @@ closePatterns.each((index,pattern)=>{
       highs:trendHighs.attributes[0].name,
       lows:trendLows.attributes[0].name,
       upLowRelation:upLowRelation?.children?.find(n => n.type == "text")?.data
-      }
+      ,}
 
+  )
+}
   )
 
 
-}	
-)
+
+
 
 
 
@@ -50,9 +52,10 @@ openPatterns.each((index,pattern)=>{
 }	
 )
 
+console.log(patternsArr)
 return (patternsArr)
 }
-
+parsingTrianglesHtml()
 module.exports=parsingTrianglesHtml;
 
 

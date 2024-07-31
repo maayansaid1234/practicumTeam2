@@ -1,0 +1,65 @@
+/* notifications.css */
+.notifications-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .notifications-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px; /* קובע את רוחב המקסימום של הקומפוננטה */
+  }
+  
+  .notification-container {
+    border: 1px solid #007BFF;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+    background-color: #f1f8ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    width: 100%; /* מבטיח שהקומפוננטה תהיה ברוחב מלא בתוך ה-container */
+  }
+  
+  .notification-container:hover {
+    transform: scale(1.02);
+  }
+  
+  .notification-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007BFF;
+    margin-bottom: 10px;
+  }
+  
+  .notification-stock-name,
+  .notification-type,
+  .notification-closing-price,
+  .notification-volume,
+  .notification-users-counter {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  .notification-link {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .notification-link:hover {
+    text-decoration: underline;
+  }
+  
+  .notification-page-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  

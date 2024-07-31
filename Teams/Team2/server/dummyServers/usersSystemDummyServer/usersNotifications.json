@@ -1,0 +1,14 @@
+[
+    {"StockName":"TSLA","NotificationType":
+    "triangle","UserMail":"maayansaid1234@gmail.com","MaxPrice":5,"MinPrice":2
+},
+{
+    "StockName":"MSFT","NotificationType":
+    "double bottoms","UserMail":"maayansaid1234@gmail.com","MaxPrice":5,"MinPrice":1
+},
+{"StockName":"TSLA","NotificationType":
+    "triangle","UserMail":"hhhh@oodidactics.com","MaxPrice":5,"MinPrice":1
+},
+{"StockName":"AA","NotificationType":
+    "triangle","UserMail":"rahchel@gmail.com","MaxPrice":5,"MinPrice":2
+}]

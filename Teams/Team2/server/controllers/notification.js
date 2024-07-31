@@ -1,14 +1,41 @@
-const combinedArr=require("../getCombinedNotifications");
+const dbAdapter=require("../db/createDBAdapter");
 
 
 
- const getNotificationsByUser= async (req, res) =>{
+const getSystemDetectedNotificationsForUser= async (req, res) =>{
+    try{
+        let { userMail } = req.params;
+        let systemDetectedNotificationsForUser=await dbAdapter.selectFromCombinedNotifications(userMail);
+        return res.status(200).json(systemDetectedNotificationsForUser);
+       
 
+        }
+       
+    
+   
+catch{
+    return res.status(500).json("An error occurred while fetching the data from the Server");
+}
+    
 
-    let { userMail } = req.params;
+}
+const getSystemDetectedNotifications= async (req, res) =>{
+    try{
+       
+        let systemDetectedNotifications=await dbAdapter.selectFromRealTimeNotifications()
+        return res.status(200).json(systemDetectedNotifications);
+       
 
-return res.status(200).json(combinedArr.filter(item=>item.userMail==userMail));
+        }
+       
+    
+   
+catch{
+    return res.status(500).json("An error occurred while fetching the data from the Server");
+}
+    
 
 }
 
-module.exports={getNotificationsByUser}
+
+module.exports={getSystemDetectedNotificationsForUser,getSystemDetectedNotifications}
