@@ -1,4 +1,6 @@
 {
+   "alpacaKeyId":"PKC7J0IUYASQJXA1TK6R",
+   "alpacaSecretKey":"vakyKo50jGHd1TrDpLtiHdWxJgHWTKkIHbrcROr9",
  "dbAdapter":{
     "type":"sql",
     "connectionString":"Server=localhost;Database=Stocks;Trusted_Connection=Yes;Driver={ODBC Driver 17 for SQL Server}"

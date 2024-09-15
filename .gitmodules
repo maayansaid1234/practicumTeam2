@@ -1,0 +1,6 @@
+[submodule "Teams/Team2/client/users/src/sharedPages"]
+	path = Teams/Team2/client/users/src/sharedPages
+	url = https://github.com/maayansaid1234/practicumTeam2SharedPages.git
+[submodule "Teams/Team2/client/admins/src/sharedPages"]
+	path = Teams/Team2/client/admins/src/sharedPages
+	url = https://github.com/maayansaid1234/practicumTeam2SharedPages.git

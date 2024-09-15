@@ -1,11 +1,11 @@
 [
     {
-"id":18,"stockName":"TSLA","notificationType":"triangle","closingPrice":4,"volume":11
+"id":24,"stockName":"TSLA","notificationType":"triangle","closingPrice":4,"volume":11
     },
     {
-"id":19,"stockName":"TSLA","notificationType":"g v ","closingPrice":3,"volume":10
+"id":25,"stockName":"TSLA","notificationType":"g v ","closingPrice":3,"volume":10
     },
     {
-        "id":20,"stockName":"MSFT","notificationType":"double bottoms","closingPrice":3,"volume":10
+        "id":26,"stockName":"MSFT","notificationType":"double bottoms","closingPrice":3,"volume":10
    }
 ]

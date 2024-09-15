@@ -20,6 +20,14 @@ class DatabaseAdapter {
     ) {
 
     }
+    insertIntoTransactions(userMail,stockName,quantity,purchasePrice,transactionType
+    ) {
+
+    }
+    getUserReport(userMail){
+
+    }
+
     disconnect() {
         throw new Error("Method 'disconnect()' must be implemented.");
     }

@@ -14,8 +14,7 @@ function readCSVFileSync(filePath) {
 		let  ret = rest.map(row=>row.split(",")
         .reduce((acc,field,index)=>
         {return{...acc,[first.split(",")[index]]
-        :index==0?new Date(field):parseInt(field)}},{}))
-		
+        :index==0?new Date(field):parseFloat(field)}},{}))
 		return ret
 		
     } catch (error) {

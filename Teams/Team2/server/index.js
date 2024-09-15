@@ -3,6 +3,7 @@ const getCombinedNotifications =require("./getCombinedNotifications.js")
 const dbAdapter=require("./db/createDBAdapter.js")
 const notificationRouter=require("./routes/notification.js")
 const userRouter=require("./routes/user.js");
+const tradingRouter=require("./routes/trading.js");
 const cors =require( "cors");
 const config=require("./config.json")
 const cron = require('node-cron');
@@ -19,6 +20,7 @@ app.use(cors())
 app.use(express.json());
 app.use("/api/notifications", notificationRouter);
 app.use("/api/users", userRouter);
+app.use("/api/trading", tradingRouter);
 dbAdapter.connect();  // connect to db
 
 
@@ -35,10 +37,7 @@ const notificationService=new NotificationService();
 
 // פונקציה למשיכת התראות חדשות משרת חיצוני
 const fetchNewNotifications = async () => {
-    
-
-
-
+   
     try {
     
        const newNotifications=await notificationsDetectionSystemAdapter.fetchSystemDetectedNotifications();
@@ -61,7 +60,7 @@ const fetchNewNotifications = async () => {
 };
 
 //קריאה להתראות חדשות אחת ליום (למשל בשעה 00:00)
-cron.schedule('45 19 * * *', fetchNewNotifications);
+cron.schedule('09 19 * * *', fetchNewNotifications);
 
 
 

@@ -6,12 +6,11 @@ import './notifications.css';
 
 const Notifications = () => {
     const [notifications, setNotifications] = useState([]);
-    const userMail = useSelector(st => st.user.currentUser);
+    const userMail = useSelector(st => st.user.currentUser?.userMail);
 
     const fetchOldNotifications = async () => {
         try {
             let res = await getNotifications(userMail);
-            console.log(res);
             setNotifications(res.data);
         }
         catch (err) {
@@ -46,6 +45,7 @@ const Notifications = () => {
     return (
         <div className="notifications-page">
             <h1 className="notification-page-title">Notifications</h1>
+           
             <ul className="notifications-list">
                 {notifications.map((notification, index) => (
                     <li key={index}>
