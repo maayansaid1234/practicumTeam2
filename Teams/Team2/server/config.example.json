@@ -1,0 +1,22 @@
+{
+  "dbAdapter": {
+    "type": "sql",
+    "connectionString": "Server=localhost;Database=Stocks;Trusted_Connection=Yes;Driver={ODBC Driver 17 for SQL Server}"
+  },
+  "alpacaKeyId": "your_alpaca_key_id",
+  "alpacaSecretKey": "your_alpaca_secret_key",
+  "mailDetails": {
+    "mailAddress": "your_email@gmail.com",
+    "appPassword": "your_gmail_app_password"
+  },
+  "port": 3500,
+  "usersSystemAdapter": {
+    "type": "DummyServer",
+    "routeForfetchUsersNotifications": "./dummyServers/usersSystemDummyServer/usersNotifications.json",
+    "routeForLogin": "./dummyServers/usersSystemDummyServer/users.json"
+  },
+  "notificationsDetectionSystemAdapter": {
+    "type": "DummyServer",
+    "route": "./dummyServers/notificationsDetectionSystemDummyServer/systemDetectedNotifications.json"
+  }
+}
